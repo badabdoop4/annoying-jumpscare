@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://75snk45d7fw1"]
+
+[ext_resource type="Script" uid="uid://cv68dnhmjk41d" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://b5d2d3ns62hlo" path="res://Images/1.jpg" id="2_0xm2m"]
+
+[node name="Main" type="CanvasLayer" unique_id=499617076]
+script = ExtResource("1_ig7tw")
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=1534574476]
+volume_db = 24.0
+
+[node name="Duration" type="Timer" parent="." unique_id=1154813383]
+wait_time = 3.0
+one_shot = true
+
+[node name="Random" type="Timer" parent="." unique_id=211428766]
+one_shot = true
+
+[node name="Middle" type="MarginContainer" parent="." unique_id=1488915780]
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 2.0
+anchor_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Middle" unique_id=1582939282]
+layout_mode = 2
+color = Color(1, 0, 0, 0.15686275)
+
+[node name="Top" type="MarginContainer" parent="." unique_id=1236893897]
+custom_minimum_size = Vector2(0, 200)
+custom_maximum_size = Vector2(-1, 200)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+
+[node name="ColorRect" type="ColorRect" parent="Top" unique_id=184450418]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Bottom" type="MarginContainer" parent="." unique_id=1914596901]
+custom_minimum_size = Vector2(0, 200)
+custom_maximum_size = Vector2(-1, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="ColorRect" type="ColorRect" parent="Bottom" unique_id=2140407707]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Skull" type="MarginContainer" parent="." unique_id=1807926024]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+size_flags_horizontal = 6
+theme_override_constants/margin_top = 31
+
+[node name="TextureRect" type="TextureRect" parent="Skull" unique_id=1561204181]
+layout_mode = 2
+texture = ExtResource("2_0xm2m")
+
+[connection signal="timeout" from="Duration" to="." method="_on_duration_timeout"]
+[connection signal="timeout" from="Random" to="." method="_on_random_timeout"]
